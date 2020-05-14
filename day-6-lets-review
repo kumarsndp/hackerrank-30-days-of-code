@@ -1,0 +1,21 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+class Solution {
+    static void Main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution */
+        int noOfTestCases = int.Parse(Console.ReadLine());
+        for(int counter = 0; counter < noOfTestCases; counter++){
+            string inputString = Console.ReadLine();    //read string from the input area
+            string evenString = "";     //string to for the even placed character
+            string oddString = "";      //string to for the odd placed character
+            for(int stringCounter = 0; stringCounter < inputString.Length; stringCounter++){
+                if(stringCounter%2 == 0)    //check if the current index is even
+                    evenString += inputString[stringCounter];   //concatenate the current index character to even string if current index is even
+                else
+                    oddString += inputString[stringCounter]; //concatenate the current index character to odd string if current index is odd
+            }
+            Console.WriteLine(evenString + " " + oddString);
+        }
+    }
+}
