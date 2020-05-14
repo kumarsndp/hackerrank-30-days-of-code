@@ -1,0 +1,30 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+class Solution {
+    static void Main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution */
+        int noOfContact = int.Parse(Console.ReadLine());
+
+        Dictionary<string, string> phoneBookDict = new Dictionary<string, string>();
+        for(int counter = 0; counter < noOfContact; counter++){
+            string contactString = Console.ReadLine();  //read the input one by one
+            string contactName = contactString.Split(' ')[0];   //get name from the input string
+            string phoneNumber = contactString.Split(' ')[1];   //get phone number from the input string
+
+            phoneBookDict.Add(contactName, phoneNumber); //add the key, value pair in our phone book dictionary
+        }
+
+        string searchName = Console.ReadLine();     //reading the very first key that needs to be searched
+        while(searchName != null){      //keep looping till we find key to search
+            string foundPhoneNumber = "";
+
+            if(phoneBookDict.TryGetValue(searchName, out foundPhoneNumber))     //dict.TryGetValue() gives the seached value againt the key in foundPhoneNumber if key found and return true or will return false if not found
+                Console.WriteLine(searchName + "=" + foundPhoneNumber);
+            else
+                Console.WriteLine("Not found");
+            
+            searchName = Console.ReadLine();    //read the next key that needs to be searched
+        }
+    }
+}
